@@ -15,7 +15,8 @@
 </head>
 
 <body >
-  	<a href="index.html" class="volver">< Inicio</a>
+  	<a href="index.html" class="volver">&#8592; Inicio</a>
+	<div id="etiqueta"></div>	
    	<div id="formulario">
    		<div class="campos fadeInRight animated">
    			<form id="form_registro">
@@ -67,19 +68,32 @@
    				
    				
    			</p>
-   			<p class="info">
-   				
-   				<label class="container">ACEPTAR RECIBIR INFORMACIÓN &nbsp; &nbsp;
-					  <input type="checkbox" checked="checked" name="recibe_info" value="si" id="recibe_info">
+   			<p class="info">   				
+   				<label class="container">ACEPTAR RECIBIR INFORMACIÓN promocional de Ballantine's &nbsp; &nbsp;
+					  <input type="checkbox" checked="checked" name="recibe_info" value="si" id="recibe_info" required>
 					  <span class="checkmark"></span>
-				</label>
+				</label>			
    			</p>
+			<p class="info">   				
+   				<label class="container">ACEPTO LA POLÍTICA DE PRIVACIDAD &nbsp; &nbsp;
+					  <input type="checkbox" checked="checked" name="acepta_politica" value="si" id="acepta_politica" required>
+					  <span class="checkmark"></span>
+				</label>			
+   			</p>	
+				
+				
+				
    			
    			<p align="center"><input class="enviar" type="submit" value="ENVIAR"></p>
    			</form>
    		</div>
    	
-    	
+    
+	<div class="legal">
+		<p>Tu información puede ser usada por Pernod Ricard Chile y las filiales del Grupo Pernod Ricard a fin de hacerte llegar información promocional sobre sus marcas. En cualquier momento podrás solicitar acceso, rectificación, supresión, restricción, objeción o retiro de tu consentimiento, de suscribirte contactándote a marianos.souza@pernod-ricard.com o enviando una carta a Av. Apoquindo 5400 oficina 2201, Las Condes. Por favor lee nuestras Políticas de Privacidad (link a las políticas de Privacidad).*</p>
+	</div>	
+		
+		
     </div>
 	<script src="cordova.js"></script>
     <script src="js/jquery-1.9.1.min.js"></script>
