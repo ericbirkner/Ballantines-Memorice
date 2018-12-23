@@ -223,6 +223,12 @@ a.time{
 	text-align: justify;
 }
 
+.legal.center{
+	text-align: center;
+	padding-bottom: 15px;
+	font-size: 15px;
+}
+
 /* Create a custom checkbox */
 .container {
     display: block;
