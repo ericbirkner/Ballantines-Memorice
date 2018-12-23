@@ -39,9 +39,9 @@
 }
 
 #memory--app-container {
-  width:70%;
+  width:61%;
   height:100%;
-  right: 3%;
+  right: 2%;
   position: absolute;
   z-index: 2;
 }
@@ -256,10 +256,10 @@
   /*background-color: #e12d00;*/
   border-radius: 5%;
   /*background-image: url(../img/card.svg);*/
-  background-image: url(../img/back_men.png);	
+  background-image: url(../img/back_men.jpg);	
   background-position:50% 50%;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: auto 96%;
 
 }
 
@@ -274,7 +274,7 @@
   border-radius: 5%;
   background-position:50% 50%;
   background-repeat: no-repeat;
-  background-size: 79%;
+  background-size: auto 96%;
 }
 
 .back.card-1 {

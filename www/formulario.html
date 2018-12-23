@@ -37,7 +37,7 @@
    			<p>
    				<!--<input type="text" name="fnac" placeholder="FECHA DE NACIMIENTO" class="input" id="birthday" required>-->
    				<select name="dia" id="dia" class="fecha" required>
-   					<option value="0">día</option>
+   					<option value="">día</option>
    					<script>
 						for(i=1;i<=31;i++){
 							document.write('<option value="'+i+'">'+i+'</option>');
@@ -46,7 +46,7 @@
    				</select>
    				
    				<select name="mes" id="mes" class="fecha" required>
-   					<option value="0">mes</option>
+   					<option value="">mes</option>
    					<script>
 						for(i=1;i<=12;i++){
 							document.write('<option value="'+i+'">'+i+'</option>');
@@ -55,7 +55,7 @@
    				</select>
    				
    				<select name="ano" id="ano" class="fecha" required>
-   					<option value="0">año</option>
+   					<option value="">año</option>
    					<script>
 						var ano = new Date().getFullYear();
 						ano = parseInt(ano);

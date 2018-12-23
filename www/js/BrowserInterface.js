@@ -42,7 +42,7 @@ fixed.addEventListener('touchmove', function(e) {
     //var selectWidget = document.getElementById("memory--settings-grid").valueOf();
 	var selectWidget = document.getElementById("memory--settings-grid").valueOf();  
     //var grid = selectWidget.options[selectWidget.selectedIndex].value;
-	var grid = "3x4";  
+	var grid = "4x3";  
     var gridValues = grid.split('x');
     var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]));
 
@@ -161,9 +161,13 @@ fixed.addEventListener('touchmove', function(e) {
     // Resize cards to fit in viewport
     if (cardMaxHeight > cardHeightForMaxWidth) {
       // Update height
+		/*
       memoryCards.style.height = (cardHeightForMaxWidth * rows) + "px";
       memoryCards.style.width = document.getElementById('memory--app-container').offsetWidth + "px";
       memoryCards.style.top = ((cardMaxHeight * rows - (cardHeightForMaxWidth * rows)) / 2) + "px";
+	  */
+      //ajuste para juego vertical
+	memoryCards.style.height = "96%";	
     }
     else {
       // Update Width
