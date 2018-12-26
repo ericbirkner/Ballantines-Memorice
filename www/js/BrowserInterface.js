@@ -82,14 +82,29 @@ fixed.addEventListener('touchmove', function(e) {
 		  }.bind(status), nonMatchingCardTime);
 		}
 
+		if($.puntos>0){
+			status.code = 4;
+		}
+
 		if($.attempts==3){
 			status.code = 4;
-
 		}
 
 		if (status.code == 4) {
 		  //aca se acaba el juego
 			console.log("puntos:"+$.puntos);
+
+			if($.puntos>0){
+				setTimeout(function(){
+					location.href = "premio.html"; }, 1000);
+
+			}else{
+				setTimeout(function(){
+					location.href = "perdio.html"; }, 1000);
+
+			}
+
+			/*
 
 			var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
 		  var message = getEndGameMessage($.puntos);
@@ -99,6 +114,7 @@ fixed.addEventListener('touchmove', function(e) {
 		  //document.getElementById('memory--end-game-score').textContent = 'Score: ' + score + ' / 100';
 
 		  document.getElementById("memory--end-game-modal").classList.toggle('show');
+			*/
 
 		}
 
@@ -181,7 +197,8 @@ fixed.addEventListener('touchmove', function(e) {
     else {
       // Update Width
       memoryCards.style.width = (cardWidthForMaxHeight * columns) + "px";
-      memoryCards.style.height = document.getElementById('memory--app-container').offsetHeight + "px";
+      //memoryCards.style.height = document.getElementById('memory--app-container').offsetHeight + "px";
+			memoryCards.style.height = "98%";
       memoryCards.style.top = 0;
     }
 
