@@ -28,6 +28,7 @@ var MemoryGame = {
   attempts: 0, // How many pairs of cards were flipped before completing game
   mistakes: 0, // How many pairs of cards were flipped before completing game
   isGameOver: false,
+  puntos:0,
 
   /**
    * Modify default settings to start a new game.
@@ -145,6 +146,7 @@ var MemoryGame = {
         cardSelection.push(index);
         if (cardSelection.length == 2) {
           this.attempts++;
+
           if (this.cards[cardSelection[0]].value !=
               this.cards[cardSelection[1]].value) {
             // No match
@@ -194,8 +196,10 @@ var MemoryGame = {
             else {
               status.code = 2,
               status.message = 'Match.';
+              this.puntos++;
             }
           }
+
           cardSelection = [];
         }
         else {

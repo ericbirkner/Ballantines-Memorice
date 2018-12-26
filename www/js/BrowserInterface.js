@@ -15,9 +15,9 @@ fixed.addEventListener('touchmove', function(e) {
 }, false);
 
 (function($) {
-  
-	
-  
+
+
+
   /************ Start hard coded settings ******************/
 
   // How long a non matching card is displayed once clicked.
@@ -40,9 +40,9 @@ fixed.addEventListener('touchmove', function(e) {
     event.preventDefault();
 
     //var selectWidget = document.getElementById("memory--settings-grid").valueOf();
-	var selectWidget = document.getElementById("memory--settings-grid").valueOf();  
+	var selectWidget = document.getElementById("memory--settings-grid").valueOf();
     //var grid = selectWidget.options[selectWidget.selectedIndex].value;
-	var grid = "4x3";  
+	var grid = "4x3";
     var gridValues = grid.split('x');
     var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]));
 
@@ -52,28 +52,25 @@ fixed.addEventListener('touchmove', function(e) {
       document.getElementById('memory--end-game-message').innerText = "";
       //document.getElementById('memory--end-game-score').innerText = "";
       buildLayout($.cards, $.settings.rows, $.settings.columns);
-	  inicio();	
+	  inicio();
     }
 
   };
-  
-  
+
+
   reset.addEventListener('click', handleSettingsSubmission);
- 	
+
   // Handle clicking on card
   var handleFlipCard = function (event) {
 	event.preventDefault();
    	var status = $.play(this.index);
     console.log(status);
-	  
-	
-		
-	
-	
+		console.log("intentos:"+$.attempts);
+
 		if (status.code != 0 ) {
 		  this.classList.toggle('clicked');
 		  console.log("abierto:"+ abrido);
-		  
+
 		}
 
 		if (status.code == 3 ) {
@@ -81,36 +78,48 @@ fixed.addEventListener('touchmove', function(e) {
 			var childNodes = document.getElementById('memory--cards').childNodes;
 			childNodes[status.args[0]].classList.remove('clicked');
 			childNodes[status.args[1]].classList.remove('clicked');
-			
+
 		  }.bind(status), nonMatchingCardTime);
 		}
-		else if (status.code == 4) {
-		  //aca se acaba el juego	
-		  var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
-		  var message = getEndGameMessage(score);
-			
+
+		if($.attempts==3){
+			status.code = 4;
+
+		}
+
+		if (status.code == 4) {
+		  //aca se acaba el juego
+			console.log("puntos:"+$.puntos);
+
+			var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
+		  var message = getEndGameMessage($.puntos);
+
 		  document.getElementById('memory--end-game-message').textContent = message;
 
 		  //document.getElementById('memory--end-game-score').textContent = 'Score: ' + score + ' / 100';
 
 		  document.getElementById("memory--end-game-modal").classList.toggle('show');
-				
+
 		}
-		
-	
+
+
 
   };
 
   var getEndGameMessage = function(score) {
     var message = "";
-	  
-	 message = "¡Felicitaciones!"
-	 document.getElementById("memory--end-game-message").href="premio.html";
-	 clearInterval(downloadTimer);
+		if(score>=1){
+			message = "¡Felicitaciones!";
+		  document.getElementById("memory--end-game-message").href="premio.html";
+	 }else{
+		 message = "Fín del juego";
+	 }
+
+	 //clearInterval(downloadTimer);
 	/*
     if (score == 100) {
       message = "¡Felicitaciones!"
-	  document.getElementById("memory--end-game-message").href="premio.html"; 
+	  document.getElementById("memory--end-game-message").href="premio.html";
     }
     else if (score >= 70 ) {
 		console.log('70');
@@ -121,7 +130,7 @@ fixed.addEventListener('touchmove', function(e) {
       message = "Fin del juego"
     }
     else {
-	  console.log('malo ql');	
+	  console.log('malo ql');
       message = "Fin del juego";
     }*/
 
@@ -167,7 +176,7 @@ fixed.addEventListener('touchmove', function(e) {
       memoryCards.style.top = ((cardMaxHeight * rows - (cardHeightForMaxWidth * rows)) / 2) + "px";
 	  */
       //ajuste para juego vertical
-	memoryCards.style.height = "96%";	
+	memoryCards.style.height = "96%";
     }
     else {
       // Update Width
@@ -221,13 +230,13 @@ fixed.addEventListener('touchmove', function(e) {
 
 
 function inicio(){
-	
+  /*
 	if(!empezo){
 		document.getElementById("cronometro").style.display="block";
 	    console.log('inicio el juego');
 		empezo = true;
 		setTimeout(function(){
-			
+
 			downloadTimer = setInterval(function(){
 			timeleft--;
 			document.getElementById("cronometro").textContent = timeleft;
@@ -236,15 +245,15 @@ function inicio(){
 				//final();
 				clearInterval(downloadTimer);
 				console.log('se acabó el tiempo');
-				 document.getElementById('memory--end-game-message').textContent = "Fin del juego";			
+				 document.getElementById('memory--end-game-message').textContent = "Fin del juego";
                  document.getElementById("memory--end-game-modal").classList.toggle('show');
 			}
-			},1000);			
+			},1000);
 		},
 		500);
 		return;
 	}else{
-		return false;	
-	}	
+		return false;
+	}
+	*/
 }
-
