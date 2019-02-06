@@ -23,12 +23,12 @@ var currentRow;
 //
 function populateDB(tx) {
 	tx.executeSql('CREATE TABLE IF NOT EXISTS premios (id INTEGER PRIMARY KEY AUTOINCREMENT, name, number)');
-	
+
 }
 
 function creaTablaRegistros(tx) {
-	
-	tx.executeSql('CREATE TABLE IF NOT EXISTS registros (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName,lastName,rut,email,birthday, recibe_info)');	
+
+	tx.executeSql('CREATE TABLE IF NOT EXISTS registros (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName,lastName,rut,email,birthday, recibe_info)');
 }
 
 // Query the database
@@ -78,7 +78,7 @@ function successCB() {
  // Cordova is ready
 //
 function onDeviceReady() {
-	
+
 	//se crean variables para almacenar tiempos
 	if(typeof(Storage) !== "undefined") {
 		console.log(localStorage);
@@ -92,15 +92,15 @@ function onDeviceReady() {
 
 		if (!localStorage.puzzle) {
 			localStorage.puzzle = 30;
-		} 
+		}
 
 	} else {
 		console.log("no le lleva web storage...");
 	}
-	
+
 	var db = window.openDatabase(db_name, "1.0", "Birkner Media", 200000);
 	db.transaction(populateDB, errorCB, successCB);
-	db.transaction(creaTablaRegistros, errorCB);	
+	db.transaction(creaTablaRegistros, errorCB);
 }
 
 
@@ -152,7 +152,7 @@ function goEdit() {
 }
 
 function goRegistro() {
-	
+
 	var db = window.openDatabase(db_name, "1.0", "Birkner Media", 200000);
 	db.transaction(function(tx){
 	var firstName 	= $( "#firstName" ).val();
@@ -161,18 +161,18 @@ function goRegistro() {
 	var lastName 	= $( "#lastName" ).val();
 	var email 		= $( "#email" ).val();
 	//var birthday 	= $( "#birthday" ).val();
-	var birthday 	= $("#ano").val()+'-'+$("#mes").val()+'-'+$("#dia").val();	
+	var birthday 	= $("#ano").val()+'-'+$("#mes").val()+'-'+$("#dia").val();
 	var rut 		= $( "#rut" ).val();
 	var sql = 'INSERT INTO registros (firstName, lastName,rut,email,birthday, recibe_info) VALUES ("' +firstName+'","'+lastName+'","'+rut+'","'+email+'","'+birthday+'","'+recibe_info+'");';
 	//var sql = 'INSERT INTO registro (firstName, lastName,rut,email,birthday, recibe_info) VALUES ("eric","birkner","111111111","email@dalso.com","1212122222","si");';
 	console.log(sql);
-	tx.executeSql(sql);	
-		
-	
-	window.location= 'memorice.html';	
-	
-	}, errorCB);	
-	
+	tx.executeSql(sql);
+
+
+	window.location= 'memorice.html';
+
+	}, errorCB);
+
 }
 
 //funcion random array
@@ -193,21 +193,20 @@ function goRegistro() {
 //validacion de formulario
 
 $(document).ready(function() {
-  
+
 	$('form').on('submit', function(Event){
     	// validation code here
 		Event.preventDefault();
 		var rut = $('#rut').val();
 		// retorna true si es válido
 		if($.validateRut(rut)) {
-			
+
 			goRegistro();
-			
+
 		}else{
 			alert('El rut no es válido');
 		}
-		
-		
+
+
   	});
 });
-
