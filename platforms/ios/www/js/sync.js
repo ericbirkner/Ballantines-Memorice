@@ -18,7 +18,7 @@ function lista_datos(tx, results) {
 	var i = 0;
 	var debug = "";
 	for (i; i < len; i++) {
-		/*
+
 		var obj = {
             firstName 		: results.rows.item(i).firstName,
             lastName 		: results.rows.item(i).lastName,
@@ -39,37 +39,6 @@ function lista_datos(tx, results) {
 						identifyNumber 	: results.rows.item(i).rut,
 						hash : "mnsdjidshjdsj"
         }
-		*/
-		var obj =
-			{
-			 "firstName": results.rows.item(i).firstName,
-			 "lastName": results.rows.item(i).lastName,
-			 "email": results.rows.item(i).email,
-			 "birthday": results.rows.item(i).birthday,
-			 "languageCode": "es",
-			 "countryCode": "CL",
-			 "address": {
-			 "postCode": "7560910",
-			 "line1" : "Av. Apoquindo 5400",
-			 "city" : "Las Condes",
-			 "state" : "Santiago"			 		 
-			 },
-			 "technicalFields": {
-			 "optIns": [{
-			 "brandId": "Ballantines",
-			 "optInStatus": true
-			 }],
-			 "localAttributes": [{
-				 "type": "Privacy Policy",
-				 "value": "true",
-				 "brandHierarchy": "NA",
-				 "marketHierarchy": "CHILE",
-				 "activityID": 'Memorice_ballantines_2019',
-				 identifyNumber : results.rows.item(i).rut	
-			 }
-			 ]
-			 }
-			}
 
 		var str = JSON.stringify(obj);
 		str = JSON.stringify(obj, null, 4); // (Optional) beautiful indented output.
